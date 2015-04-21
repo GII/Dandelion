@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='hi3_dandelion_ui_controller' version='1.0'>
+	<schema type='-xmlschema' package='com.hi3project.dandelion.uib.xml.jaxb' name='dandelion_uib'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/dandelion_uib/UIBuilderSchema.xsd' origLocation='src/com/hi3project/dandelion/uib/local/xml/UIBuilderSchema.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>

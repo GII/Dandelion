@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<aui:UserInterfaceModel
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:aui='http://www.usixml.eu/aui'
+    xsi:schemaLocation='http://www.usixml.eu/aui file:/Users/gervasio/Repositorios/tesis_gervasio/subprojects/usixml_java/src/org/usixml/model/aui/xml/AUISchema.xsd'
+    useCase="caso de uso">
+    
+    
+    <aui:AbstractUIModel>
+        
+        <aui:AbstractInteractionUnit
+            id="1"
+            name="panel1"
+            role="panel"
+            importanceLevel="10"
+            securityLevel="min"
+            isCompound="false"
+            state="estado"
+            frequency="1.0"
+            repetitionFactor="1"
+            domainReference="etiqueta"
+            isLocalisable="false">
+            
+            <aui:Composition
+                rationale="rationale"
+                role="role of the panel">
+                
+                <aui:AbstractInteractionUnit 
+                    id="2"
+                    name="label1"
+                    role="label"
+                    importanceLevel="10"
+                    securityLevel="min"
+                    isCompound="false"
+                    state="estado"
+                    frequency="1.0"
+                    repetitionFactor="1"
+                    domainReference="etiqueta"
+                    isLocalisable="false">
+
+                        <aui:DataInputOutputSupport 
+                            minCardinality="1"
+                            maxCardinality="2"
+                            defaultValue="default"
+                            dataLength="10"
+                            dataFormat="string"
+                            range="rango"
+                            ioFacet="facet"
+                            isDynamic="false"
+                            isRelevant="true"
+                            patternMatching="*"
+                            inputSupport="true"
+                            outputSupport="false">
+                            <aui:dataType>text</aui:dataType>
+                        </aui:DataInputOutputSupport>
+
+                        <aui:DataInputOutputSupport 
+                            minCardinality="1"
+                            maxCardinality="2"
+                            defaultValue="default"
+                            dataLength="10"
+                            dataFormat="string"
+                            range="rango"
+                            ioFacet="facet"
+                            isDynamic="false"
+                            isRelevant="true"
+                            patternMatching="*"
+                            inputSupport="true"
+                            outputSupport="false">
+                            <aui:dataType>boolean</aui:dataType>
+                        </aui:DataInputOutputSupport>
+
+                </aui:AbstractInteractionUnit>
+                
+                <aui:AbstractInteractionUnit 
+                    id="3"
+                    name="label2"
+                    role="label"
+                    importanceLevel="10"
+                    securityLevel="min"
+                    isCompound="false"
+                    state="estado"
+                    frequency="1.0"
+                    repetitionFactor="1"
+                    domainReference="etiqueta"
+                    isLocalisable="false">
+
+                        <aui:DataInputOutputSupport 
+                            minCardinality="1"
+                            maxCardinality="2"
+                            defaultValue="default"
+                            dataLength="10"
+                            dataFormat="string"
+                            range="rango"
+                            ioFacet="facet"
+                            isDynamic="false"
+                            isRelevant="true"
+                            patternMatching="*"
+                            inputSupport="true"
+                            outputSupport="false">
+                            <aui:dataType>text</aui:dataType>
+                        </aui:DataInputOutputSupport>
+
+                        <aui:DataInputOutputSupport 
+                            minCardinality="1"
+                            maxCardinality="2"
+                            defaultValue="default"
+                            dataLength="10"
+                            dataFormat="string"
+                            range="rango"
+                            ioFacet="facet"
+                            isDynamic="false"
+                            isRelevant="true"
+                            patternMatching="*"
+                            inputSupport="true"
+                            outputSupport="false">
+                            <aui:dataType>text</aui:dataType>
+                        </aui:DataInputOutputSupport>
+
+                </aui:AbstractInteractionUnit>
+                
+            </aui:Composition>
+                
+        </aui:AbstractInteractionUnit>
+        
+        
+
+    </aui:AbstractUIModel>
+    
+    
+</aui:UserInterfaceModel>

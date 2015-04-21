@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/Users/gervasio/Repositorios/tesis_gervasio/subprojects/hi3_dandelion_ui_controller/src/es/udc/gii/hi3/dandelion/uib/xml/UIBuilderSchema.xsd" uri="xml-resources/jaxb/dandelion_uib/UIBuilderSchema.xsd"/>
+    <system systemId="file:/Users/gervasio/Repositorios/tesis_gervasio/subprojects/hi3_dandelion_application/src/es/udc/gii/hi3/dandelion/uib/local/xml/UIBuilderSchema.xsd" uri="xml-resources/jaxb/dandelion_uib/UIBuilderSchema.xsd"/>
+    <system systemId="file:/Users/gervasio/Repositorios/tesis_gervasio/subprojects/hi3_dandelion_application/src/com/hi3project/dandelion/uib/local/xml/UIBuilderSchema.xsd" uri="xml-resources/jaxb/dandelion_uib/UIBuilderSchema.xsd"/>
+</catalog>

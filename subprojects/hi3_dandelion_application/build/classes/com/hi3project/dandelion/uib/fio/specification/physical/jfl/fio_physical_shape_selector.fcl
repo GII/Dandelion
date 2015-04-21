@@ -1,0 +1,422 @@
+FUNCTION_BLOCK fio_physical_shape_builder
+
+VAR_INPUT
+
+	user_age: REAL;
+	user_ict_literacy: REAL;
+
+        modality_gesture: REAL;
+        modality_gesture_mouse: REAL;
+        modality_keyboard: REAL;
+        modality_sound_production: REAL;
+        modality_speech_recognition: REAL;
+        modality_speech_production: REAL;
+        modality_symbol: REAL;
+        modality_touch: REAL;
+        modality_video: REAL;        
+        modality_wimp: REAL;
+
+        fio_physical_size: REAL;
+        fio_physical_status: REAL;
+        fio_physical_distance: REAL;
+
+
+	env_motion: REAL;
+
+END_VAR
+
+
+VAR_OUTPUT
+
+	fio_physical_shape_button: REAL;
+	fio_physical_shape_custom: REAL;
+	fio_physical_shape_display: REAL;
+        fio_physical_shape_embedded: REAL;
+        fio_physical_shape_keyboard: REAL;
+        fio_physical_shape_remote: REAL;
+        fio_physical_shape_surface: REAL;
+        fio_physical_shape_table: REAL;
+        fio_physical_shape_toy: REAL;
+        fio_physical_shape_unknown: REAL;
+
+END_VAR
+
+
+
+FUZZIFY user_age
+        TERM newborn := (0, 1) (1, 0);
+	TERM baby := (0, 1) (1, 1) (2.5, 0);
+	TERM little_child := trape 1 3 4 6;
+	TERM child := trape 4 5 12 15;
+        TERM teenager := trape 11 14 18 20;
+        TERM young_adult := trape 17 20 32 40;
+        TERM adult := (21, 0) (25, 1) (110, 1);  
+	TERM old := (55, 0) (70, 1) (110, 1);
+END_FUZZIFY
+
+FUZZIFY user_ict_literacy
+	TERM low := (0, 1) (1.25, 1) (2.5, 0);
+	TERM normal := trape 1.25 2.5 5 6.25;
+	TERM high := trape 5 6.25 7.5 8.75;
+	TERM very_high := (7.5, 0) (8.75, 1) (10, 1);
+END_FUZZIFY
+
+FUZZIFY modality_gesture
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_gesture_mouse
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_keyboard
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_sound_production
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_speech_recognition
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_speech_production
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_symbol
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_touch
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_video
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+FUZZIFY modality_wimp
+        TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := trape 1.25 2.5 3.25 5;
+	TERM medium_granularity := trape 3.75 5 6.25 7.5;
+	TERM high_granularity := (6.25,0) (7.5,1) (10,1);
+END_FUZZIFY
+
+
+FUZZIFY env_motion
+	TERM low := (0, 1) (1.25, 1) (2.5, 0);
+	TERM normal := trape 1.25 2.5 5 6.25;
+	TERM high := trape 5 6.25 7.5 8.75;
+	TERM very_high := (7.5, 0) (8.75, 1) (10, 1);
+END_FUZZIFY
+
+
+FUZZIFY fio_physical_size
+	TERM very_small := (0,1) (2,1) (3,0);
+	TERM small := (2,0) (4, 1) (5,0);
+	TERM medium := (4,0) (7,1) (8.5,0);
+	TERM big := (7,0) (8.75,1) (10,1);
+END_FUZZIFY
+
+
+FUZZIFY fio_physical_status
+	TERM mobile := (0,1) (2,1) (3,0);
+	TERM portable := (2,0) (4, 1) (5,0);
+	TERM stationary := (4,0) (7,1) (8.5,0);
+	TERM unknown := (7,0) (8.75,1) (10,1);
+END_FUZZIFY
+
+
+FUZZIFY fio_physical_distance //centimeters
+	TERM very_close := (0,1) (40,1) (70,0);
+	TERM close := (50,0) (100, 1) (150,0);
+	TERM same_room := (100,0) (200,1) (500,0);
+	TERM far := (400,0) (700,1) (10000,1);
+END_FUZZIFY
+
+
+//---------- OUTPUT -----------
+
+DEFUZZIFY fio_physical_shape_button
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_custom
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_display
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_embedded
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_keyboard
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_remote
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_surface
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_table
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_toy
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+DEFUZZIFY fio_physical_shape_unknown
+	TERM not_supported := (0,1) (1.25,1) (2.5,0);
+	TERM low_granularity := (2.5,0) (3.75, 1) (5,0);
+	TERM medium_granularity := (5,0) (6.25,1) (7.5,0);
+	TERM high_granularity := (7.5,0) (8.75,1) (10,1);
+	METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 0;		// Default value is 0 (if no rule activates defuzzifier)
+END_DEFUZZIFY
+
+
+RULEBLOCK No1
+	AND : MIN;			// Use 'min' for 'and' (also implicit use 'max' for 'or' to fulfill DeMorgan's Law)
+	ACT : MIN;			// Use 'min' activation method
+	ACCU : MAX;			// Use 'max' accumulation method
+
+        
+        //TOY SHAPE
+	RULE 1: IF user_age IS newborn
+            OR user_age IS baby
+            OR user_age IS little_child
+            OR user_age IS child
+            THEN fio_physical_shape_toy IS high_granularity;
+
+        RULE 2: IF user_age IS teenager
+            THEN fio_physical_shape_toy IS medium_granularity;
+
+        RULE 3: IF user_age IS young_adult
+            OR user_age IS adult
+            OR user_age IS old
+            THEN fio_physical_shape_toy IS low_granularity;
+
+
+
+       //EMBEDDED SHAPE
+       RULE 4: IF modality_gesture IS high_granularity
+            OR modality_gesture IS medium_granularity
+            THEN fio_physical_shape_embedded IS high_granularity;
+
+       RULE 5: IF modality_gesture IS low_granularity
+            THEN fio_physical_shape_embedded IS medium_granularity;
+
+       RULE 6: IF modality_sound_production IS high_granularity
+            OR modality_sound_production IS medium_granularity
+            THEN fio_physical_shape_embedded IS high_granularity;
+
+       RULE 7: IF modality_sound_production IS low_granularity
+            THEN fio_physical_shape_embedded IS medium_granularity;
+
+       RULE 8: IF modality_speech_recognition IS high_granularity
+            OR modality_speech_recognition IS medium_granularity
+            THEN fio_physical_shape_embedded IS high_granularity;
+
+       RULE 9: IF modality_speech_recognition IS low_granularity
+            THEN fio_physical_shape_embedded IS medium_granularity;
+
+       RULE 10: IF modality_symbol IS high_granularity
+            OR modality_symbol IS medium_granularity
+            THEN fio_physical_shape_embedded IS high_granularity;
+
+       RULE 11: IF modality_symbol IS low_granularity
+            THEN fio_physical_shape_embedded IS medium_granularity;
+
+
+
+       //BUTTON SHAPE
+       RULE 12: IF modality_touch IS low_granularity
+            THEN fio_physical_shape_button IS high_granularity;
+
+       RULE 13: IF modality_touch IS medium_granularity
+            THEN fio_physical_shape_button IS medium_granularity;
+
+       RULE 14: IF modality_touch IS high_granularity
+            THEN fio_physical_shape_button IS low_granularity;
+
+       RULE 30: IF modality_keyboard IS low_granularity
+            THEN fio_physical_shape_button IS medium_granularity;
+        
+       RULE 31: IF modality_keyboard IS medium_granularity
+            THEN fio_physical_shape_button IS high_granularity;
+
+
+       //KEYBOARD SHAPE
+       RULE 15: IF modality_touch IS low_granularity
+            THEN fio_physical_shape_keyboard IS medium_granularity;
+
+       RULE 16: IF modality_touch IS medium_granularity
+            THEN fio_physical_shape_keyboard IS medium_granularity;
+
+       RULE 17: IF modality_touch IS high_granularity
+            THEN fio_physical_shape_keyboard IS low_granularity;
+
+       RULE 18: IF modality_keyboard IS high_granularity
+            THEN fio_physical_shape_keyboard IS high_granularity;
+
+       RULE 19: IF modality_keyboard IS medium_granularity
+            THEN fio_physical_shape_keyboard IS medium_granularity;
+
+       RULE 20: IF modality_keyboard IS low_granularity
+            THEN fio_physical_shape_keyboard IS low_granularity;
+
+       RULE 11: IF modality_keyboard IS not_supported
+            THEN fio_physical_shape_keyboard IS not_supported;
+
+
+
+        //DISPLAY SHAPE
+       RULE 22: IF modality_touch IS high_granularity
+            THEN fio_physical_shape_display IS high_granularity;
+
+       RULE 23: IF modality_touch IS medium_granularity
+            THEN fio_physical_shape_display IS medium_granularity;
+
+       RULE 24: IF modality_touch IS low_granularity
+            THEN fio_physical_shape_display IS low_granularity;
+
+       RULE 25: IF modality_touch IS not_supported
+            THEN fio_physical_shape_display IS not_supported;
+
+       RULE 22: IF modality_video IS high_granularity
+            THEN fio_physical_shape_display IS high_granularity;
+
+       RULE 23: IF modality_video IS medium_granularity
+            THEN fio_physical_shape_display IS medium_granularity;
+
+       RULE 24: IF modality_video IS low_granularity
+            THEN fio_physical_shape_display IS low_granularity;
+
+       RULE 25: IF modality_video IS not_supported
+            THEN fio_physical_shape_display IS not_supported;
+
+
+       //REMOTE
+       RULE 100: IF modality_keyboard IS medium_granularity
+                OR modality_keyboard IS low_granularity
+                OR modality_keyboard IS high_granularity
+                AND fio_physical_distance IS same_room
+                THEN fio_physical_shape_remote IS high_granularity;
+
+        RULE 101: IF modality_keyboard IS medium_granularity
+                OR modality_keyboard IS low_granularity
+                OR modality_keyboard IS high_granularity
+                AND fio_physical_distance IS far
+                THEN fio_physical_shape_remote IS high_granularity;
+
+        RULE 102: IF fio_physical_distance IS same_room
+                OR fio_physical_distance IS far
+                THEN fio_physical_shape_remote IS medium_granularity;
+
+        
+       //SURFACE SHAPE
+       RULE 22: IF modality_touch IS high_granularity
+            THEN fio_physical_shape_surface IS high_granularity;
+
+       RULE 23: IF modality_touch IS medium_granularity
+            THEN fio_physical_shape_surface IS medium_granularity;
+
+       RULE 24: IF modality_touch IS low_granularity
+            THEN fio_physical_shape_surface IS low_granularity;
+
+       RULE 25: IF modality_touch IS not_supported
+            THEN fio_physical_shape_surface IS not_supported;
+
+       RULE 25: IF fio_physical_distance IS far
+            THEN fio_physical_shape_surface IS not_supported;
+
+        RULE 25: IF fio_physical_distance IS same_room
+            THEN fio_physical_shape_surface IS low_granularity;
+
+
+END_RULEBLOCK
+
+
+END_FUNCTION_BLOCK

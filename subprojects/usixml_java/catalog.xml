@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/home/gervasio/Trabajo/svn/tesis_gervasio_varela_fernandez/subprojects/usixml_java/src/org/usixml/model/aui/xml/AUISchema.xsd" uri="xml-resources/jaxb/usixml_aui/AUISchema.xsd"/>
+    <system systemId="file:/Users/gervasio/Repositorios/tesis_gervasio/subprojects/usixml_java/src/org/usixml/model/aui/xml/AUISchema.xsd" uri="xml-resources/jaxb/usixml_aui/AUISchema.xsd"/>
+</catalog>
