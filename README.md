@@ -10,7 +10,7 @@ Dandelion has been designed and developed by Gervasio Varela Fernandez during th
 
 References:
 
-[Varela 2015] Gervasio Varela, [Autonomous Adaptation of User Interfaces During Application Mobility Processes in Ambient Intelligence Scenarios](https://github.com/GII/Dandelion/raw/master/documents/Gervasio-Varela-2015_Autonomous-Adaptation-of-User-Interfaces-During-Application-Mobility-Processes-in-Ambient-Intelligence-Scenarios.pdf). PhD Thesis report. Computer Scinece Department. University of A Coruña. April 2015.
+[Varela 2015] Gervasio Varela, [Autonomous Adaptation of User Interfaces During Application Mobility Processes in Ambient Intelligence Scenarios](https://github.com/GII/Dandelion/raw/master/documents/Gervasio-Varela-2015_Autonomous-Adaptation-of-User-Interfaces-During-Application-Mobility-Processes-in-Ambient-Intelligence-Scenarios.pdf). PhD Thesis report. Computer Science Department. University of A Coruña. April 2015.
 
 [Varela et al. 2014] Gervasio Varela, Alejandro Paz-Lopez, Jose Antonio Becerra Permuy, Richard J. Duro Fernandez, [Prototyping Distributed Physical User Interfaces in Ambient Intelligence Setups](http://link.springer.com/chapter/10.1007%2F978-3-319-07788-8_8), Proceedings of the 2nd International Conference on Distributed, Ambient and Pervasive Environments (DAPI 2014), pp 76 - 85, Heraklion, Greece, Springer, 2014.
 
